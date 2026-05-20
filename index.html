@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrintMyLogoHere — Elite Brand Assets & Prepress Engineering</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --surface-color: #121212;
+            --border-color: #262626;
+            --text-main: #ffffff;
+            --text-muted: #8a8a8a;
+            --accent-color: #ff6b00; /* Premium industrial amber */
+            --font-sans: 'Inter', sans-serif;
+            --font-display: 'Syncopate', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            letter-spacing: -0.01em;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Layout Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header / Navigation */
+        header {
+            border-bottom: 1px solid var(--border-color);
+            padding: 2rem 0;
+            position: sticky;
+            top: 0;
+            background-color: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(12px);
+            z-index: 100;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-display);
+            font-size: 0.9rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        .nav-tag {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            border: 1px solid var(--border-color);
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 8rem 0 6rem 0;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+        }
+
+        h1 {
+            font-family: var(--font-sans);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 300;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            max-width: 900px;
+        }
+
+        h1 strong {
+            font-weight: 600;
+        }
+
+        .hero-meta {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            font-weight: 300;
+        }
+
+        /* Philosophy / Process Section */
+        .process-section {
+            padding: 6rem 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .section-label {
+            font-family: var(--font-display);
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent-color);
+            margin-bottom: 3rem;
+            display: block;
+        }
+
+        .grid-three-col {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .step-card {
+            border: 1px solid var(--border-color);
+            padding: 2.5rem;
+            background-color: var(--surface-color);
+            border-radius: 6px;
+        }
+
+        .step-num {
+            font-family: var(--font-display);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .step-card h3 {
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+
+        .step-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 300;
+        }
+
+        /* Order / Intake Form Section */
+        .intake-section {
+            padding: 6rem 0 10rem 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .form-container {
+            max-width: 700px;
+            background-color: var(--surface-color);
+            border: 1px solid var(--border-color);
+            padding: 3.5rem;
+            border-radius: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group textarea {
+            width: 100%;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 1rem;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            border-radius: 4px;
+            transition: border-color 0.2s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        /* Custom File Upload Styling */
+        .file-upload-wrapper {
+            position: relative;
+            border: 2px dashed var(--border-color);
+            padding: 2.5rem;
+            text-align: center;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .file-upload-wrapper:hover {
+            background-color: rgba(255, 107, 0, 0.02);
+            border-color: var(--accent-color);
+        }
+
+        .file-upload-wrapper input[type="file"] {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .upload-text {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .upload-text strong {
+            color: var(--text-main);
+            font-weight: 400;
+        }
+
+        .file-name-display {
+            margin-top: 0.75rem;
+            font-size: 0.85rem;
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        /* Premium Action Button */
+        .btn-submit {
+            background-color: var(--text-main);
+            color: var(--bg-color);
+            border: none;
+            width: 100%;
+            padding: 1.2rem;
+            font-family: var(--font-sans);
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--accent-color);
+            color: #fff;
+        }
+
+        .btn-submit:active {
+            transform: scale(0.99);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 0;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-align: center;
+            letter-spacing: 0.05em;
+        }
+
+        @media (max-width: 768px) {
+            .hero { padding: 5rem 0 4rem 0; }
+            .form-container { padding: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">PrintMyLogo<span>Here</span></a>
+            <div class="nav-tag">Prepress Studio</div>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <section class="hero">
+            <div class="hero-grid">
+                <h1>We don't just print logos.<br><strong>We engineer them for physical architecture.</strong></h1>
+                <p class="hero-meta">
+                    Low-end print platforms distort your geometry and compromise your luxury finishes. We provide manual vector optimization, flawless prepress alignment, and bespoke macro-tactile execution for ultra-premium brands.
+                </p>
+            </div>
+        </section>
+
+        <section class="process-section">
+            <span class="section-label">The Prepress Protocol</span>
+            <div class="grid-three-col">
+                <div class="step-card">
+                    <span class="step-num">01 / SUBMISSION</span>
+                    <h3>Upload Asset</h3>
+                    <p>Provide your existing vector or visual assets. No automated filters or compression algorithms will touch your files.</p>
+                </div>
+                <div class="step-card">
+                    <span class="step-num">02 / CALIBRATION</span>
+                    <h3>DTP Verification</h3>
+                    <p>A master DTP specialist manually reviews your layouts, paths, bleeding zones, and assigns precise vector layers for custom spot UV or foil configurations.</p>
+                </div>
+                <div class="step-card">
+                    <span class="step-num">03 / EXECUTION</span>
+                    <h3>Elite Production</h3>
+                    <p>Your calibrated designs are routed to industrial blind-trade houses utilizing premium matte materials, heavy silk laminates, and dimensionally structural finishes.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="intake-section">
+            <span class="section-label">Initiate Project</span>
+            <div class="form-container">
+                <form action="YOUR_FORM_ENDPOINT" method="POST" enctype="multipart/form-data">
+                    
+                    <div class="form-group">
+                        <label for="name">Identity / Company</label>
+                        <input type="text" id="name" name="name" required placeholder="e.g., Alexander Studio">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Secure Channel Email</label>
+                        <input type="email" id="email" name="email" required placeholder="name@domain.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="spec">Finish Intent & Scope</label>
+                        <textarea id="spec" name="spec" rows="4" placeholder="Describe your placement goals (e.g., Heavy matte black card stock with selective clear spot UV structural pattern on vehicle artwork)"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Asset Attachment (.AI, .EPS, .PDF, .PNG)</label>
+                        <div class="file-upload-wrapper">
+                            <input type="file" id="file-upload" name="logo_asset" accept=".ai,.eps,.pdf,.png" required onchange="displayFileName()">
+                            <div class="upload-text">
+                                <span>Drop vector archive here or <strong>browse files</strong></span>
+                            </div>
+                            <div id="file-name" class="file-name-display"></div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Submit for Prepress Review</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            &copy; 2026 PrintMyLogoHere. Architectural Brand Assets. All rights reserved.
+        </div>
+    </footer>
+
+    <script>
+        function displayFileName() {
+            const input = document.getElementById('file-upload');
+            const output = document.getElementById('file-name');
+            if(input.files.length > 0) {
+                output.innerText = `Selected Asset: ${input.files[0].name}`;
+            } else {
+                output.innerText = "";
+            }
+        }
+    </script>
+</body>
+</html>
