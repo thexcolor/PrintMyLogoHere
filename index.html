@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PrintMyLogoHere — Elite Brand Assets & Prepress Engineering</title>
+    <title>PrintMyLogoHere — Visual Engineering & Prepress</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Syncopate:wght@700&display=swap" rel="stylesheet">
@@ -14,7 +14,8 @@
             --border-color: #262626;
             --text-main: #ffffff;
             --text-muted: #8a8a8a;
-            --accent-color: #ff6b00; /* Premium industrial amber */
+            /* Accent matched precisely to your SVG logo's core orange/yellow */
+            --accent-color: #fcaf17; 
             --font-sans: 'Inter', sans-serif;
             --font-display: 'Syncopate', sans-serif;
         }
@@ -44,10 +45,10 @@
         /* Header / Navigation */
         header {
             border-bottom: 1px solid var(--border-color);
-            padding: 2rem 0;
+            padding: 1.5rem 0;
             position: sticky;
             top: 0;
-            background-color: rgba(10, 10, 10, 0.8);
+            background-color: rgba(10, 10, 10, 0.85);
             backdrop-filter: blur(12px);
             z-index: 100;
         }
@@ -58,17 +59,15 @@
             align-items: center;
         }
 
-        .logo {
-            font-family: var(--font-display);
-            font-size: 0.9rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--text-main);
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
             text-decoration: none;
+            transition: opacity 0.2s ease;
         }
 
-        .logo span {
-            color: var(--accent-color);
+        .logo-wrapper:hover {
+            opacity: 0.8;
         }
 
         .nav-tag {
@@ -81,9 +80,29 @@
             border-radius: 4px;
         }
 
-        /* Hero Section */
+        /* Hero Section w/ Background Image */
         .hero {
-            padding: 8rem 0 6rem 0;
+            padding: 10rem 0 8rem 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Make sure 'hero.jpg' is in the same folder as this HTML file */
+            background-image: url('hero.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.12; /* Keeps the texture subtle without overpowering text */
+            z-index: -1;
+            /* Optional: subtle gradient to ensure text readability at the bottom */
+            mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
         }
 
         .hero-grid {
@@ -139,6 +158,30 @@
             padding: 2.5rem;
             background-color: var(--surface-color);
             border-radius: 6px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Specialized card for Step 3 to house the image */
+        .step-card-img {
+            padding: 0;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background-color: var(--surface-color);
+            border-radius: 6px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .step-card-img img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .step-card-img-content {
+            padding: 2rem 2.5rem 2.5rem 2.5rem;
         }
 
         .step-num {
@@ -149,13 +192,13 @@
             display: block;
         }
 
-        .step-card h3 {
+        .step-card h3, .step-card-img-content h3 {
             font-size: 1.3rem;
             font-weight: 400;
             margin-bottom: 1rem;
         }
 
-        .step-card p {
+        .step-card p, .step-card-img-content p {
             color: var(--text-muted);
             font-size: 0.95rem;
             font-weight: 300;
@@ -220,7 +263,7 @@
         }
 
         .file-upload-wrapper:hover {
-            background-color: rgba(255, 107, 0, 0.02);
+            background-color: rgba(252, 175, 23, 0.05); /* Tinted to match accent */
             border-color: var(--accent-color);
         }
 
@@ -265,12 +308,12 @@
             letter-spacing: 0.05em;
             cursor: pointer;
             border-radius: 4px;
-            transition: background-color 0.2s ease, transform 0.1s ease;
+            transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
         }
 
         .btn-submit:hover {
             background-color: var(--accent-color);
-            color: #fff;
+            color: #000000; /* High contrast against the yellow/orange accent */
         }
 
         .btn-submit:active {
@@ -288,7 +331,7 @@
         }
 
         @media (max-width: 768px) {
-            .hero { padding: 5rem 0 4rem 0; }
+            .hero { padding: 6rem 0 5rem 0; }
             .form-container { padding: 2rem; }
         }
     </style>
@@ -297,15 +340,38 @@
 
     <header>
         <div class="container nav-wrapper">
-            <a href="#" class="logo">PrintMyLogo<span>Here</span></a>
+            <a href="/" class="logo-wrapper">
+                <svg id="Brand_Logo" height="65" width="65" viewBox="0 0 566.93 566.93" xmlns="http://www.w3.org/2000/svg">
+                  <g>
+                    <circle cx="171.64" cy="271.28" r="14.31" fill="#fbb41c"/>
+                    <path d="M171.64,212.45c-32.49,0-58.84,26.34-58.84,58.84,0,16.67,6.93,31.71,18.07,42.42l12.39,12.39v-54.81c0-15.64,12.58-28.37,28.37-28.37s28.37,12.7,28.37,28.37-12.7,28.37-28.37,28.37c-5.22,0-10.1-1.43-14.31-3.9v44.4l14.31,14.31,41.03-41.03c10.98-10.69,17.81-25.62,17.81-42.15,0-32.49-26.34-58.84-58.84-58.84Z" fill="#fbb41c"/>
+                  </g>
+                  <g>
+                    <path d="M289.53,228.34c-.76,1.41-1.96,2.54-3.58,3.41-1.63.86-3.67,1.29-6.14,1.29h-5.05v11.56h-6.04v-30.1h11.08c2.33,0,4.31.4,5.95,1.21,1.64.8,2.87,1.91,3.69,3.32.82,1.41,1.23,3,1.23,4.79,0,1.61-.38,3.12-1.14,4.53ZM283.26,227.03c.81-.76,1.21-1.83,1.21-3.21,0-2.93-1.64-4.4-4.92-4.4h-4.79v8.75h4.79c1.67,0,2.9-.38,3.71-1.14Z" fill="#fcaf17"/>
+                    <path d="M310.47,244.6l-6.64-11.73h-2.85v11.73h-6.04v-30.1h11.3c2.33,0,4.31.41,5.95,1.23,1.64.82,2.87,1.92,3.69,3.32.82,1.39,1.23,2.95,1.23,4.68,0,1.98-.58,3.77-1.73,5.37-1.15,1.59-2.86,2.69-5.13,3.3l7.2,12.2h-6.98ZM300.98,228.34h5.05c1.64,0,2.86-.39,3.67-1.19.8-.79,1.21-1.89,1.21-3.3s-.4-2.45-1.21-3.21c-.81-.76-2.03-1.14-3.67-1.14h-5.05v8.84Z" fill="#fcaf17"/>
+                    <path d="M328.62,214.5v30.1h-6.04v-30.1h6.04Z" fill="#fcaf17"/>
+                    <path d="M360.32,244.6h-6.04l-13.67-20.65v20.65h-6.04v-30.14h6.04l13.67,20.7v-20.7h6.04v30.14Z" fill="#fcaf17"/>
+                    <path d="M386.75,214.5v4.87h-8.02v25.22h-6.04v-25.22h-8.02v-4.87h22.08Z" fill="#fcaf17"/>
+                    <path d="M298.65,251.26v29.75h-3.02v-23.76l-10.61,23.76h-2.2l-10.61-23.67v23.67h-3.02v-29.75h3.19l11.51,25.79,11.51-25.79h3.23Z" fill="#fff"/>
+                    <path d="M325.43,250.87l-9.66,18.41v11.73h-3.02v-11.73l-9.75-18.41h3.41l7.85,15.65,7.8-15.65h3.36Z" fill="#fff"/>
+                    <path d="M272.22,314.96h10.82v2.46h-13.84v-30.14h3.02v27.68Z" fill="#fff"/>
+                    <path d="M293.31,315.76c-2.27-1.31-4.06-3.13-5.37-5.48s-1.96-5-1.96-7.96.65-5.61,1.96-7.96,3.1-4.17,5.37-5.48c2.27-1.31,4.8-1.96,7.59-1.96s5.36.65,7.63,1.96,4.05,3.13,5.35,5.48,1.94,5,1.94,7.96-.65,5.61-1.94,7.96-3.08,4.17-5.35,5.48-4.82,1.96-7.63,1.96-5.32-.65-7.59-1.96ZM306.93,313.54c1.78-1.03,3.19-2.52,4.23-4.46s1.55-4.19,1.55-6.75-.52-4.8-1.55-6.73-2.44-3.41-4.23-4.44c-1.78-1.03-3.8-1.55-6.04-1.55s-4.25.52-6.04,1.55c-1.78,1.04-3.19,2.52-4.23,4.44s-1.55,4.17-1.55,6.73.52,4.81,1.55,6.75,2.44,3.43,4.23,4.46c1.78,1.04,3.8,1.55,6.04,1.55s4.25-.52,6.04-1.55Z" fill="#fff"/>
+                    <path d="M345.05,296.08c-.86-1.98-2.18-3.54-3.94-4.68s-3.85-1.7-6.23-1.7c-2.24,0-4.25.52-6.04,1.55s-3.19,2.51-4.23,4.42-1.55,4.13-1.55,6.66.52,4.76,1.55,6.68,2.44,3.41,4.23,4.44c1.78,1.03,3.8,1.55,6.04,1.55,2.1,0,3.99-.45,5.67-1.36,1.68-.9,3.03-2.2,4.05-3.88,1.02-1.68,1.6-3.64,1.75-5.89h-12.68v-2.46h15.87v2.2c-.14,2.65-.86,5.04-2.16,7.18-1.29,2.14-3.03,3.83-5.2,5.07-2.17,1.24-4.61,1.85-7.31,1.85s-5.32-.65-7.59-1.96c-2.27-1.31-4.06-3.13-5.37-5.48s-1.96-5-1.96-7.96.65-5.61,1.96-7.96,3.1-4.17,5.37-5.48c2.27-1.31,4.8-1.96,7.59-1.96,3.22,0,6.04.81,8.45,2.41,2.41,1.61,4.17,3.85,5.26,6.73h-3.54Z" fill="#fff"/>
+                    <path d="M361.01,315.76c-2.27-1.31-4.06-3.13-5.37-5.48s-1.96-5-1.96-7.96.65-5.61,1.96-7.96,3.1-4.17,5.37-5.48c2.27-1.31,4.8-1.96,7.59-1.96s5.36.65,7.63,1.96,4.05,3.13,5.35,5.48,1.94,5,1.94,7.96-.65,5.61-1.94,7.96-3.08,4.17-5.35,5.48-4.82,1.96-7.63,1.96-5.32-.65-7.59-1.96ZM374.63,313.54c1.78-1.03,3.19-2.52,4.23-4.46s1.55-4.19,1.55-6.75-.52-4.8-1.55-6.73-2.44-3.41-4.23-4.44c-1.78-1.03-3.8-1.55-6.04-1.55s-4.25.52-6.04,1.55c-1.78,1.04-3.19,2.52-4.23,4.44s-1.55,4.17-1.55,6.73.52,4.81,1.55,6.75,2.44,3.43,4.23,4.46c1.78,1.04,3.8,1.55,6.04,1.55s4.25-.52,6.04-1.55Z" fill="#fff"/>
+                    <path d="M293.7,323.74v30.1h-6.04v-12.81h-12.89v12.81h-6.04v-30.1h6.04v12.37h12.89v-12.37h6.04Z" fill="#fbb41c"/>
+                    <path d="M305.68,328.61v7.55h10.13v4.79h-10.13v7.98h11.43v4.92h-17.46v-30.14h17.46v4.92h-11.43Z" fill="#fbb41c"/>
+                    <path d="M338.11,353.84l-6.64-11.73h-2.85v11.73h-6.04v-30.1h11.3c2.33,0,4.31.41,5.95,1.23,1.64.82,2.87,1.92,3.69,3.32.82,1.39,1.23,2.95,1.23,4.68,0,1.98-.58,3.77-1.73,5.37-1.15,1.59-2.86,2.69-5.13,3.3l7.2,12.2h-6.98ZM328.62,337.58h5.05c1.64,0,2.86-.39,3.67-1.19.8-.79,1.21-1.89,1.21-3.3s-.4-2.45-1.21-3.21c-.81-.76-2.03-1.14-3.67-1.14h-5.05v8.84Z" fill="#fbb41c"/>
+                    <path d="M356.26,328.61v7.55h10.13v4.79h-10.13v7.98h11.43v4.92h-17.46v-30.14h17.46v4.92h-11.43Z" fill="#fbb41c"/>
+                  </g>
+                </svg>
+            </a>
             <div class="nav-tag">Prepress Studio</div>
         </div>
     </header>
 
-    <main class="container">
-        
+    <main>
         <section class="hero">
-            <div class="hero-grid">
+            <div class="container hero-grid">
                 <h1>We don't just print logos.<br><strong>We engineer them for physical architecture.</strong></h1>
                 <p class="hero-meta">
                     Low-end print platforms distort your geometry and compromise your luxury finishes. We provide manual vector optimization, flawless prepress alignment, and bespoke macro-tactile execution for ultra-premium brands.
@@ -313,7 +379,7 @@
             </div>
         </section>
 
-        <section class="process-section">
+        <section class="process-section container">
             <span class="section-label">The Prepress Protocol</span>
             <div class="grid-three-col">
                 <div class="step-card">
@@ -326,15 +392,18 @@
                     <h3>DTP Verification</h3>
                     <p>A master DTP specialist manually reviews your layouts, paths, bleeding zones, and assigns precise vector layers for custom spot UV or foil configurations.</p>
                 </div>
-                <div class="step-card">
-                    <span class="step-num">03 / EXECUTION</span>
-                    <h3>Elite Production</h3>
-                    <p>Your calibrated designs are routed to industrial blind-trade houses utilizing premium matte materials, heavy silk laminates, and dimensionally structural finishes.</p>
+                <div class="step-card-img">
+                    <img src="section3.jpg" alt="Final engineered tactile print asset">
+                    <div class="step-card-img-content">
+                        <span class="step-num">03 / EXECUTION</span>
+                        <h3>Elite Production</h3>
+                        <p>Your calibrated designs are routed to industrial blind-trade houses utilizing premium matte materials, heavy silk laminates, and dimensionally structural finishes.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="intake-section">
+        <section class="intake-section container">
             <span class="section-label">Initiate Project</span>
             <div class="form-container">
                 <form action="YOUR_FORM_ENDPOINT" method="POST" enctype="multipart/form-data">
@@ -351,7 +420,7 @@
 
                     <div class="form-group">
                         <label for="spec">Finish Intent & Scope</label>
-                        <textarea id="spec" name="spec" rows="4" placeholder="Describe your placement goals (e.g., Heavy matte black card stock with selective clear spot UV structural pattern on vehicle artwork)"></textarea>
+                        <textarea id="spec" name="spec" rows="4" placeholder="Describe your placement goals (e.g., Heavy matte black card stock with selective clear spot UV structural pattern)"></textarea>
                     </div>
 
                     <div class="form-group">
@@ -369,7 +438,6 @@
                 </form>
             </div>
         </section>
-
     </main>
 
     <footer>
